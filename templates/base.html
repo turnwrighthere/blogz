@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang=en>
+    <head>
+        <title>{{page_title}}</title>
+        <style>
+            .error{color:crimson;}
+            h1 {font-weight: bold;}
+            * {font-family: sans-serif;}
+            .post {margin-bottom: 2em;}
+        </style>
+    </head>
+<body>
+
+    <div class="header">
+        <a href="/blog">Main Blog Page</a>, <a href="/newpost">Add a Blog Post</a>
+    </div>
+
+    {% block content %}
+    {% endblock %}
+
+</body>
+</html>
