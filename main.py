@@ -111,10 +111,14 @@ def login():
         username = request.form['username']
         password = request.form['password']
         user = User.query.filter_by(username=username).first()
+        user_list = User.query.filter_by(username=username)
 
-        if not user:
+        if username in user_list:
             flash('User does not exist.', 'error')
-            return redirect('/signup')
+            return redirect('/login')
+        if not user:
+            flash('Please make sure all fields are filled in.', 'error')
+            return redirect('/login')
         if username and user.password == password:
             session['username'] = username
             flash("Logged in")
