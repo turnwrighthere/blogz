@@ -2,11 +2,11 @@
 
 {% block content %}
 
-    {% if blog_posts|length == 0 %}
+    {% if all_posts|count == 0 %}
         <h3>No posts yet</h3>
     {% else %}
 
-        {% for post in blog_posts %}
+        {% for post in all_posts %}
         <div class="post">
             <h2>
                 <a href="/blog?id={{post.id}}">{{post.title}}</a>

@@ -1,19 +1,47 @@
 <!doctype html>
 <html lang=en>
     <head>
-        <title>{{page_title}}</title>
+        <title>~—~{{page_title}}~—~</title>
         <style>
             .error{color:crimson;}
             h1 {font-weight: bold;}
             * {font-family: sans-serif;}
-            .post {margin-bottom: 2em;}
+            .post {margin-bottom: 2em;border-bottom: solid 1px lightgray; max-width: 300px;}
+            * { color: #333;}
+            a {color: rgb(8, 91, 206);}
+            a:hover {color: rgb(10, 57, 122);}
+            input, textarea {border: solid 1px #333; width: 100%;max-width: 200px;margin-bottom: 15px; padding: 4px; display: block;}
+            input[type="submit"]:hover {
+                background-color: rgb(8, 91, 206); color: white;
+            }
+            html {background-color:#eee;        
+                background: rgba(252,255,255,1);
+                background: -moz-linear-gradient(top, rgba(252,255,255,1) 0%, rgba(220,228,242,1) 100%);
+                background: -webkit-gradient(left top, left bottom, color-stop(0%, rgba(252,255,255,1)), color-stop(100%, rgba(220,228,242,1)));
+                background: -webkit-linear-gradient(top, rgba(252,255,255,1) 0%, rgba(220,228,242,1) 100%);
+                background: -o-linear-gradient(top, rgba(252,255,255,1) 0%, rgba(220,228,242,1) 100%);
+                background: -ms-linear-gradient(top, rgba(252,255,255,1) 0%, rgba(220,228,242,1) 100%);
+                background: linear-gradient(to bottom, rgba(252,255,255,1) 0%, rgba(220,228,242,1) 100%);
+                filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#fcffff', endColorstr='#dce4f2', GradientType=0 );
+                height: 100%;}
         </style>
+
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">   
     </head>
 <body>
 
     <div class="header">
-        <a href="/blog">Main Blog Page</a>, <a href="/newpost">Add a Blog Post</a>
+        <a href="/">Home</a>, <a href="/blog">Main Blog Page</a>, <a href="/newpost">Add a Blog Post</a>, <a href="/logout">Logout</a>, <a href="/login">Login</a>, <a href="/signup">Signup</a>
     </div>
+
+        {% with messages = get_flashed_messages(with_categories=True) %}
+        <ul>
+            {% for category, message in messages %}
+            <li class="{{ category }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+        
+        {% endwith %}
 
     {% block content %}
     {% endblock %}
